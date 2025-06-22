@@ -1,6 +1,10 @@
 # Use an official Python runtime as a parent image
 FROM python:3.11-slim
 
+# Set environment variables
+ENV APP_ENV=production \
+    APP_PORT=1000
+
 # Set the working directory in the container
 WORKDIR /app
 
