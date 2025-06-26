@@ -30,4 +30,4 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/backend:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/backend:${{ github.sha }}
-            ghcr.io/${{ github.repository }}/backend:${{ github.sha }}
+            ghcr.io/${{ github.repository.toLower() }}/backend:${{ github.sha }}
