@@ -22,6 +22,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Set repo name lowercase
+        id: repo_lower
+        run: echo "repo=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPUT
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -30,4 +34,4 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/backend:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/backend:${{ github.sha }}
-            ghcr.io/${{ steps.repo_lower.outputs.repo }}/backend:${{ github.sha }}
+            ghcr.io/${{ steps.repo_lower.outputs.repo
