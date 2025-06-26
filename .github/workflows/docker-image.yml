@@ -15,7 +15,9 @@ jobs:
 
       - name: Set repo name lowercase
         id: repo_lower
-        run: echo "repo=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPUT
+        run: |
+          REPO="${{ github.repository }}"
+          echo "repo=${REPO,,}" >> $GITHUB_OUTPUT
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
