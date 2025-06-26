@@ -13,6 +13,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set repo name lowercase
+        id: repo_lower
+        run: echo "repo=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPUT
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -30,5 +34,5 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/backend:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/backend:${{ github.sha }}
-            ghcr.io/${{ github.repository.toLowerCase() }}:latest
-            ghcr.io/${{ github.repository.toLowerCase() }}:${{ github.sha }}
+            ghcr.io/${{ steps.repo_lower.outputs.repo }}:latest
+            ghcr.io/${{ steps.repo_lower.outputs.repo }}:${{ github.sha }}
