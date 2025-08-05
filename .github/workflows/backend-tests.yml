@@ -21,4 +21,9 @@ jobs:
         pip install fastapi pytest httpx
     - name: Run tests
       run: |
-        pytest test_main.py
+        pytest --html=report.html test_main.py
+    - name: Upload test report
+      uses: actions/upload-artifact@v4
+      with:
+        name: backend-test-report
+        path: report.html
