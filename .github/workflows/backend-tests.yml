@@ -35,8 +35,7 @@ jobs:
     - name: Install Bandit
       run: pip install bandit
     - name: Run Bandit security scan
-      run: bandit -r . -f html -o bandit-report.html
-      continue-on-error: true
+      run: bandit -r . -f html -o bandit-report.html || true
     - name: Upload Bandit report
       uses: actions/upload-artifact@v4
       with:
