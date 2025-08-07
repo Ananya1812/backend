@@ -27,7 +27,6 @@ jobs:
       with:
         name: backend-test-report
         path: report.html
-        pytest test_main.py
 
   security-scan:
     runs-on: ubuntu-latest
