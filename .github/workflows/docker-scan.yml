@@ -18,7 +18,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Docker image
-        run: docker build -t my-app:latest ./backend
+        run: docker build -t my-app:latest .
 
       - name: Run Trivy vulnerability scan using Docker
         run: |
