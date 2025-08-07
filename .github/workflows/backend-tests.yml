@@ -18,9 +18,15 @@ jobs:
         python-version: '3.11'
     - name: Install dependencies
       run: |
-        pip install fastapi pytest httpx
+        pip install fastapi pytest httpx pytest-html
     - name: Run tests
       run: |
+        pytest --html=report.html test_main.py
+    - name: Upload test report
+      uses: actions/upload-artifact@v4
+      with:
+        name: backend-test-report
+        path: report.html
         pytest test_main.py
 
   security-scan:
